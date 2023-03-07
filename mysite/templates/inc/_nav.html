@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-    <a class="navbar-brand" href="#">FakeCSV</a>
+<nav class="navbar navbar-expand-lg bg-light" >
+    <a class="navbar-brand" href="{% url 'index' %}" style="margin: 0 65px;">FakeCSV</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,22 +7,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="#">Schemas</a></li>
+        {% endif %}
+        </ul>
 
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
+            <li class="navbar-text">Hello, {{request.user.username}}</li>
+         <li class="nav-item"><a class="nav-link" href="{% url 'signout' %}" style="margin: 0 65px 0 15px ;">Logout</a></li>
+        {% else %}
+         <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}" style="margin: 0 65px;">Login</a></li>
+            {% endif %}
         </ul>
 
 
-        {% if request.user.is_authenticated %}
-        <span class="navbar-text">
-            Ласкаво просимо! {{request.user.username}}
-            <a href="{% url 'signout' %}"  class="nav-link">Logout</a>
-            </span>
-        {% else %}
-        <span class="navbar-text">
-            <a href="#" class="nav-link">Login</a>
-            </span>
-        {% endif %}
-
     </div>
-     </div>
 </nav>
