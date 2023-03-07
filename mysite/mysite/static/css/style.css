@@ -1,0 +1,27 @@
+.card {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 650px;
+        height: 445px;
+    left: 395px;
+    top: 180px;
+
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+}
+
+.loginh1{
+
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 79px;
+
+    display: flex;
+    align-items: flex-end;
+
+    color: #373A3C;
+}
