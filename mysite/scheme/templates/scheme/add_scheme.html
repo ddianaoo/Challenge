@@ -1,4 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>New schema</h2>
+
+<form style="LINE-HEIGHT: 20px;" method='POST' action="{% url 'add_scheme' %}">
+{% csrf_token %}
+    Name: {{ form.name }}  &nbsp;&nbsp;&nbsp; Rows:
+    {{ form.rows }}
+    {{ form.user}}
+        <p><div>Type of data:  {{ form.type1 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name1 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order1 }} </div></p>
+
+    <details  onclick="getElementById('2').style.display = 'none' ">
+    <summary id='2'>Add column</summary>
+    <p><div>Type of data:  {{ form.type2 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name2 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order2 }} </div></p>
+    <details  onclick="getElementById('3').style.display = 'none' ">
+    <summary id='3'>Add column</summary>
+    <p><div>Type of data:  {{ form.type3 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name3 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order3 }} </div></p>
+    <details  onclick="getElementById('4').style.display = 'none' ">
+    <summary id='4'>Add column</summary>
+    <p><div>Type of data:  {{ form.type4 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name4 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order4 }} </div></p>
+    <details  onclick="getElementById('5').style.display = 'none' ">
+    <summary id='5'>Add column</summary>
+    <p><div>Type of data:  {{ form.type5 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name5 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order5 }} </div></p>
+    <details  onclick="getElementById('6').style.display = 'none' ">
+    <summary id='6'>Add column</summary>
+    <p><div>Type of data:  {{ form.type6 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name6 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order6 }} </div></p>
+    </details>
+    </details>
+    </details>
+    </details>
+    </details>
+
+
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
 {% endblock %}
