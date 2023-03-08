@@ -101,7 +101,7 @@ a:hover, a:active {
     {{ form.rows }}
     {{ form.user.as_hidden}}
 
-    <p><div>Type of data:  {{ form.type1 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name1 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order1 }} </div></p>
+    <p><div>{{ form.type1.label }}  {{ form.type1 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name1 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order1 }} </div></p>
 
     <details  onclick="getElementById('2').style.display = 'none' ">
     <summary id='2'>Add column</summary>

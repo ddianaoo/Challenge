@@ -3,35 +3,66 @@
 <h2>New schema</h2>
 
 <form style="LINE-HEIGHT: 20px;" method='POST' action="{% url 'add_scheme' %}">
+    <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+    <br>
 {% csrf_token %}
-    Name: {{ form.name }}  &nbsp;&nbsp;&nbsp; Rows:
-    {{ form.rows }}
-    {{ form.user}}
-        <p><div>Type of data:  {{ form.type1 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name1 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order1 }} </div></p>
-
-    <details  onclick="getElementById('2').style.display = 'none' ">
-    <summary id='2'>Add column</summary>
-    <p><div>Type of data:  {{ form.type2 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name2 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order2 }} </div></p>
+    Name: {{ form.name }}
+    {{ form.rows.as_hidden }}
+    {{ form.user.as_hidden}}
+    <br>
+    <h3>Schema columns</h3>
+    <br>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name1.label }}  {{ form.name1 }}</div>
+  <div class="col-md">{{ form.type1.label }}  {{ form.type1 }}</div>
+  <div class="col-md">{{ form.order1.label }}  {{ form.order1 }}</div>
+  </div>
+    <br>
+<details  onclick="getElementById('2').style.display = 'none' ">
+    <summary id='2' class="btn btn-primary">Add column</summary>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name2.label }}  {{ form.name2 }}</div>
+  <div class="col-md">{{ form.type2.label }}  {{ form.type2 }}</div>
+  <div class="col-md">{{ form.order2.label }}  {{ form.order2 }}</div>
+  </div>
+        <br>
     <details  onclick="getElementById('3').style.display = 'none' ">
-    <summary id='3'>Add column</summary>
-    <p><div>Type of data:  {{ form.type3 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name3 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order3 }} </div></p>
+    <summary id='3' class="btn btn-primary">Add column</summary>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name3.label }}  {{ form.name3 }}</div>
+  <div class="col-md">{{ form.type3.label }}  {{ form.type3 }}</div>
+  <div class="col-md">{{ form.order3.label }}  {{ form.order3 }}</div>
+  </div>
+        <br>
     <details  onclick="getElementById('4').style.display = 'none' ">
-    <summary id='4'>Add column</summary>
-    <p><div>Type of data:  {{ form.type4 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name4 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order4 }} </div></p>
+    <summary id='4' class="btn btn-primary">Add column</summary>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name4.label }}  {{ form.name4 }}</div>
+  <div class="col-md">{{ form.type4.label }}  {{ form.type4 }}</div>
+  <div class="col-md">{{ form.order4.label }}  {{ form.order4 }}</div>
+  </div>
+        <br>
     <details  onclick="getElementById('5').style.display = 'none' ">
-    <summary id='5'>Add column</summary>
-    <p><div>Type of data:  {{ form.type5 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name5 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order5 }} </div></p>
+    <summary id='5' class="btn btn-primary">Add column</summary>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name5.label }}  {{ form.name5 }}</div>
+  <div class="col-md">{{ form.type5.label }}  {{ form.type5 }}</div>
+  <div class="col-md">{{ form.order5.label }}  {{ form.order5 }}</div>
+  </div>
+        <br>
     <details  onclick="getElementById('6').style.display = 'none' ">
-    <summary id='6'>Add column</summary>
-    <p><div>Type of data:  {{ form.type6 }} &nbsp;&nbsp;&nbsp; Name of column: {{ form.name6 }} &nbsp;&nbsp;&nbsp; Order of column: {{ form.order6 }} </div></p>
+    <summary id='6' class="btn btn-primary">Add column</summary>
+  <div class="row g-2">
+    <div class="col-md">{{ form.name6.label }}  {{ form.name6 }}</div>
+  <div class="col-md">{{ form.type6.label }}  {{ form.type6 }}</div>
+  <div class="col-md">{{ form.order6.label }}  {{ form.order6 }}</div>
+  </div>
     </details>
     </details>
     </details>
     </details>
     </details>
 
-
-<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 
