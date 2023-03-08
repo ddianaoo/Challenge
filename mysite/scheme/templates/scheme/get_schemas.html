@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Data schemas</h2>
-<a href="{% url 'add_scheme' %}" class="btn btn-success">New schema</a>
+<a href="{% url 'add_scheme' %}" class="btn btn-success" style="float: right;">New schema</a>
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for s in object_list %}
+    <tr>
+        <th scope="row">{{ s.id }}</th>
+        <td>{{ s.name }}</td>
+        <td>{{ s.created_at|date:"Y-m-d H:i" }}</td>
+        <td>
+            <span><a class="nav-text" href="#" style="color: blue;">Edit scheme</a>
+            <a class="nav-text" href="#" style="color: red;">Delete</a></span>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

@@ -6,15 +6,9 @@ from django.views.generic import ListView
 
 
 def get_schemas(request):
-    #return render(request, 'scheme/get_schemas.html')
-
     user = request.user
-
     queryset = Scheme.objects.filter(user=user)
-    print(queryset)
-
-    context = {"object_list": queryset}
-    return render(request, "scheme/scheme_list.html", context)
+    return render(request, "scheme/get_schemas.html", {"object_list": queryset})
 
 
 def add_scheme(request):

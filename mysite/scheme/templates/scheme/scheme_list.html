@@ -38,12 +38,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Schemes</strong>
+                                <strong class="card-title">Data schemas</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Name</th>
 
 
@@ -56,6 +57,7 @@
                                     <tbody>
 {% for s in object_list %}
                                         <tr>
+                                            <td>{{ s.id }}</td>
                                             <td>{{ s.name }}</td>
                                             <td>{{ s.created_at|date:"Y-m-d H:i" }}</td>
                                             <td>
