@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Data schemas</h2>
+<div class="col-md-9">
 <a href="{% url 'add_scheme' %}" class="btn btn-success" style="float: right;">New schema</a>
 <br>
 <br>
@@ -21,11 +22,11 @@
         <td>{{ s.created_at|date:"Y-m-d H:i" }}</td>
         <td>
             <span><a class="nav-text" href="#" style="color: blue;">Edit scheme</a>
-            <a class="nav-text" href="#" style="color: red;">Delete</a></span>
+            <a class="nav-text" href="{% url 'delete_scheme' s.id %}" style="color: red;">Delete</a></span>
         </td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
-
+</div>
 {% endblock %}

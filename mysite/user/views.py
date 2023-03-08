@@ -10,7 +10,7 @@ from .forms import UserLoginForm
 
 
 def index(request):
-    return render(request, 'user/index.html', {'message': 'Hello'})
+    return redirect('signin')
 
 
 def signin(request):
@@ -19,7 +19,7 @@ def signin(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('/')
+            return redirect('schemas')
     else:
         form = UserLoginForm()
     return render(request, 'user/signin.html', {'form':form})
