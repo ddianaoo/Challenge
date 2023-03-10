@@ -1,9 +1,9 @@
 from django.urls import path
 from .views import *
-
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('all/', get_schemas, name='schemas'),
-    path('add/', add_scheme, name='add_scheme'),
-    path('delete/<int:pk>/', delete_scheme, name='delete_scheme'),
+    path('all/', login_required(get_schemas), name='schemas'),
+    path('add/', login_required(add_scheme), name='add_scheme'),
+    path('delete/<int:pk>/', login_required(delete_scheme), name='delete_scheme'),
 ]

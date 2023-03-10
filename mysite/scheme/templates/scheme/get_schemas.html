@@ -21,7 +21,7 @@
         <td>{{ s.name }}</td>
         <td>{{ s.created_at|date:"Y-m-d H:i" }}</td>
         <td>
-            <span><a class="nav-text" href="#" style="color: blue;">Edit scheme</a>
+            <span>
             <a class="nav-text" href="{% url 'delete_scheme' s.id %}" style="color: red;">Delete</a></span>
         </td>
     </tr>
