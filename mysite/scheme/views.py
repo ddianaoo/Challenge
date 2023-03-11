@@ -125,6 +125,7 @@ def single_generate(request, pk):
         filename = 'media/' + str(scheme.user) + '_' + str(scheme.name) + '_' + str(datetime.datetime.today().strftime('%Y-%m-%d_%H-%M-%S')) + '.csv'
 
         task = datagenerate(rows, columns_real, names, filename, pk)
+        print(task)
         print(filename)
         return redirect('single_scheme', pk=pk)
 
@@ -140,4 +141,6 @@ def single_generate(request, pk):
     rows.sort(key=lambda x: x[0])
 
     queryset = DataSets.objects.filter(scheme=pk).order_by('-id')
+    # for i in queryset:
+    #     print(i.upload)
     return render(request, "scheme/single_generate.html", {"s": schema, 'rows': rows, 'pk': pk, 'queryset': queryset})

@@ -52,7 +52,7 @@ class Scheme(models.Model):
 
 
 class DataSets(models.Model):
-    upload = models.FileField(upload_to='', blank=True)
+    upload = models.FileField(blank=True)
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, null=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
     rows = models.IntegerField(default=1, validators=[MinValueValidator(1)])

@@ -18,7 +18,6 @@ def datagenerate(records, columns, names, filename, scheme_id):
     fake = Faker('en_US')
     filename_ = filename
     with open(filename_, 'w') as csvFile:
-        print(True)
         writer = csv.writer(csvFile)
         if names:
             writer.writerow(names)
@@ -49,7 +48,10 @@ def datagenerate(records, columns, names, filename, scheme_id):
                     filtered_dict[k] = v
             writer.writerow(filtered_dict)
 
-        dataset.upload = filename_[6:]
+        dataset.upload = filename_
+        print('from task')
+        print(filename_)
+        print()
         dataset.save()
 
     return filename
