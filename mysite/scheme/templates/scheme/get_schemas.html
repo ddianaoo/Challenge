@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% block title %}
+{{ title }} :: {{block.super }}
+{% endblock %}
 {% block content %}
-<h2>Data schemas</h2>
+<h2>{{ title }}</h2>
 <div class="col-md-9">
 <a href="{% url 'add_scheme' %}" class="btn btn-success" style="float: right;">New schema</a>
 <br>

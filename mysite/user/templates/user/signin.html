@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% block title %}
+{{ title }} :: {{block.super }}
+{% endblock %}
 {% block content %}
 
-    <h1 class="loginh1">Login</h1>
+    <h1 class="loginh1">{{ title }}</h1>
     <form action="{% url 'signin' %}" method="post">
         {% csrf_token %}
         {{ form }}

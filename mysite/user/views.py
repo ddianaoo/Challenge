@@ -24,7 +24,7 @@ def signin(request):
             return redirect('schemas')
     else:
         form = UserLoginForm()
-    return render(request, 'user/signin.html', {'form':form})
+    return render(request, 'user/signin.html', {'form': form, 'title': 'Login'})
 
 
 def signout(request):
