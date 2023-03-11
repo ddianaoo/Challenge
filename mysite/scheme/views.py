@@ -50,98 +50,101 @@ def single_scheme(request, pk):
 
 
 def data_sets(request, pk):
-    return render(request, "scheme/data_sets.html", {'pk': pk})
+    queryset = DataSets.objects.filter(scheme=pk).order_by('-id')
+    return render(request, "scheme/data_sets.html", {'pk': pk, 'queryset': queryset})
 
 
 def create_set(request, pk):
-    scheme = Scheme.objects.get(pk=pk)
-    columns = []
+    if request.method == 'POST':
+        scheme = Scheme.objects.get(pk=pk)
+        rows = request.POST['rows']
+        columns = []
 
-    columns.append(scheme.type1)
-    columns.append(scheme.type2)
-    columns.append(scheme.type3)
-    columns.append(scheme.type4)
-    columns.append(scheme.type5)
-    columns.append(scheme.type6)
-
-
-    # Replace IDs with names
-    col_names = (
-    ('0', 'Choose..'),
-    ('1', 'Full Name'),
-    ('2', 'Job'),
-    ('3', 'Company'),
-    ('4', 'Integer'),
-    ('5', 'Text'),
-    ('6', 'Email'),
-    )
+        columns.append(scheme.type1)
+        columns.append(scheme.type2)
+        columns.append(scheme.type3)
+        columns.append(scheme.type4)
+        columns.append(scheme.type5)
+        columns.append(scheme.type6)
 
 
-    def replace(list, dictionary):
-        for idx, val in enumerate(list):
-            list[idx] = dictionary[int(list[idx])]
-        return list
+        # Replace IDs with names
+        col_names = (
+        ('0', 'Choose..'),
+        ('1', 'Full Name'),
+        ('2', 'Job'),
+        ('3', 'Company'),
+        ('4', 'Integer'),
+        ('5', 'Text'),
+        ('6', 'Email'),
+        )
 
-    replace(columns, col_names)
-    columns_real = [i[1] for i in columns]
-    while 'Choose..' in columns_real:
-        columns_real.remove('Choose..')
 
-    print('Columns: ')
-    print(columns_real)
+        def replace(list, dictionary):
+            for idx, val in enumerate(list):
+                list[idx] = dictionary[int(list[idx])]
+            return list
 
-    # NAMES
-    # Get names
-    names = []
+        replace(columns, col_names)
+        columns_real = [i[1] for i in columns]
+        while 'Choose..' in columns_real:
+            columns_real.remove('Choose..')
 
-    names.append(scheme.name1)
-    names.append(scheme.name2)
-    names.append(scheme.name3)
-    names.append(scheme.name4)
-    names.append(scheme.name5)
-    names.append(scheme.name6)
+        print('Columns: ')
+        print(columns_real)
 
-    while '' in names:
-        names.remove('')
+        # NAMES
+        # Get names
+        names = []
 
-    while 'Column' in names:
-        names.remove('Column')
+        names.append(scheme.name1)
+        names.append(scheme.name2)
+        names.append(scheme.name3)
+        names.append(scheme.name4)
+        names.append(scheme.name5)
+        names.append(scheme.name6)
 
-    print('Names of columns: ')
-    print(names)
+        while '' in names:
+            names.remove('')
 
-    # ORDER
-    # Get order
-    order = []
+        while 'Column' in names:
+            names.remove('Column')
 
-    order.append(scheme.order1)
-    order.append(scheme.order2)
-    order.append(scheme.order3)
-    order.append(scheme.order4)
-    order.append(scheme.order5)
-    order.append(scheme.order6)
+        print('Names of columns: ')
+        print(names)
 
-    while 0 in order:
-        order.remove(0)
+        # ORDER
+        # Get order
+        order = []
 
-    print('Order: ')
-    print(order)
+        order.append(scheme.order1)
+        order.append(scheme.order2)
+        order.append(scheme.order3)
+        order.append(scheme.order4)
+        order.append(scheme.order5)
+        order.append(scheme.order6)
 
-    if order:
-        columns = [x for _, x in sorted(zip(order, columns_real))]
-        names = [x for _, x in sorted(zip(order, names))]
+        while 0 in order:
+            order.remove(0)
 
-    print('Columns in order: ')
-    print(columns_real)
-    print(names)
+        print('Order: ')
+        print(order)
 
-    rows = scheme.rows
-    print('Number of rows:')
-    print(rows)
+        if order:
+            columns = [x for _, x in sorted(zip(order, columns_real))]
+            names = [x for _, x in sorted(zip(order, names))]
 
-    filename = 'media/' + str(scheme.user) + '_' + str(scheme.name) + '_' + str(datetime.datetime.today().strftime('%Y-%m-%d_%H-%M-%S')) + '.csv'
+        print('Columns in order: ')
+        print(columns_real)
+        print(names)
 
-    task = datagenerate(rows, columns_real, names, filename, pk)
-    print(filename)
-    print(task)
-    return render(request, 'scheme/load.html', {'s': scheme})
+        rows = scheme.rows
+        print('Number of rows:')
+        print(rows)
+
+        filename = 'media/' + str(scheme.user) + '_' + str(scheme.name) + '_' + str(datetime.datetime.today().strftime('%Y-%m-%d_%H-%M-%S')) + '.csv'
+
+        task = datagenerate(rows, columns_real, names, filename, pk, rows)
+        print(filename)
+        return render(request, 'scheme/load.html', {'s': scheme})
+    return render(request, 'scheme/create_set.html')

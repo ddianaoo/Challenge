@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{% url 'create_data_sets' pk %}">
+    <label for="rows" class="col-form-label">Rows </label>
+    <input type="number" name="rows" id="rows" class="form-control">
+    <button type="submit" class="btn btn-primary" style="color:white; background-color: black; border: black;">
+        Create data set
+    </button>
+</form>
+
+{% endblock %}

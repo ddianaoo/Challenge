@@ -17,8 +17,6 @@ CHOICES = (
 
 class Scheme(models.Model):
 
-    upload = models.FileField(upload_to='', blank=True)
-
     name = models.CharField(max_length=30, default="Scheme", blank=False, unique=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -48,7 +46,16 @@ class Scheme(models.Model):
     order6 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
-    rows = models.IntegerField(default=1, validators=[MinValueValidator(1)])
 
     def __str__(self):
         return f"<{self.id} Scheme - {self.name}, by {self.user} user >"
+
+
+class DataSets(models.Model):
+    upload = models.FileField(upload_to='', blank=True)
+    scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, null=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    rows = models.IntegerField(default=1, validators=[MinValueValidator(1)])
+
+    def __str__(self):
+        return f"<id {self.id} - Scheme id {self.scheme}>"

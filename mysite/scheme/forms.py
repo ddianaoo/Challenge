@@ -9,8 +9,7 @@ class SchemeForm(forms.ModelForm):
         fields = ['name', 'user',
                   'type1', 'type2', 'type3', 'type4', 'type5', 'type6',
                   'name1', 'name2', 'name3', 'name4', 'name5', 'name6',
-                  'order1', 'order2', 'order3', 'order4', 'order5', 'order6',
-                  'rows']
+                  'order1', 'order2', 'order3', 'order4', 'order5', 'order6']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'style': 'width:300px'}),
             'name1': forms.TextInput(attrs={'class': 'form-control', 'style': 'width:300px'}),

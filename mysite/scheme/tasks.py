@@ -1,7 +1,7 @@
 
 import csv
 from faker import Faker
-from .models import Scheme
+from .models import Scheme, DataSets
 import datetime
 import os
 from os import path
@@ -10,7 +10,8 @@ from time import sleep
 from django.core.files.base import ContentFile
 
 
-def datagenerate(records, columns, names, filename, scheme_id):
+def datagenerate(records, columns, names, filename, scheme_id, rows):
+    dataset = DataSets(scheme=scheme_id, rows=rows)
     scheme = Scheme.objects.get(id=scheme_id)
     scheme.upload = 'In Progress'
     scheme.save()
