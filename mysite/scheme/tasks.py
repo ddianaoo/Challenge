@@ -49,7 +49,7 @@ def datagenerate(records, columns, names, filename, scheme_id):
                     filtered_dict[k] = v
             writer.writerow(filtered_dict)
 
-        scheme.upload = 'media/' + filename_
+        scheme.upload = filename_[6:]
         scheme.save()
 
     return filename

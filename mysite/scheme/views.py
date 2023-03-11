@@ -143,5 +143,5 @@ def create_set(request, pk):
 
     task = datagenerate(rows, columns_real, names, filename, pk)
     print(filename)
-
-    return render(request, 'scheme/load.html', {'task': task})
+    print(task)
+    return render(request, 'scheme/load.html', {'s': scheme})

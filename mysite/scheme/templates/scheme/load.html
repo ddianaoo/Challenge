@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ task }}
+{{ s.upload.url }}
+<a href="{{ s.upload.url }}" download><button class="button">Download</button></a>
+<a href="C:\Users\Diana\DjangoProjects\Challenge\mysite{{ s.upload.url }}" download><button class="button">Download</button></a>
 {% endblock %}
