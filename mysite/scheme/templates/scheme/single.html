@@ -16,7 +16,7 @@
     {% for row in rows %}
     {% if  row.1 != 'Column' %}
     <tr>
-        <th scope="row">{{ row.0|add:"1" }}</th>
+        <th scope="row">{{ row.0}}</th>
         <td>{{ row.1 }}</td>
         <td>
 {% if row.2 == '0' %}
@@ -34,4 +34,5 @@
     </tbody>
 </table>
 </div>
+<h2><a href="#">Data sets</a></h2>
 {% endblock %}

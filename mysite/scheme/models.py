@@ -40,12 +40,12 @@ class Scheme(models.Model):
     type5 = models.CharField(max_length=30, choices=CHOICES, default='0')
     type6 = models.CharField(max_length=30, choices=CHOICES, default='0')
 
-    order1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    order2 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    order3 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    order4 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    order5 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    order6 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    order1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
+    order2 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
+    order3 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
+    order4 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
+    order5 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
+    order6 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(6)])
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
     rows = models.IntegerField(default=1, validators=[MinValueValidator(1)])
