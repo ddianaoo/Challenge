@@ -45,8 +45,10 @@ def single_scheme(request, pk):
     row6 = [schema.order6, schema.name6, schema.type6]
     rows = [row1, row2, row3, row4, row5, row6]
     rows.sort(key=lambda x: x[0])
+
+    queryset = DataSets.objects.filter(scheme=pk)
     #return render(request, "scheme/single.html", {"s": schema, 'rows': rows})
-    return render(request, "scheme/single.html", {"s": schema, 'rows': rows})
+    return render(request, "scheme/single.html", {"s": schema, 'rows': rows, 'pk': pk, 'queryset': queryset})
 
 
 def data_sets(request, pk):

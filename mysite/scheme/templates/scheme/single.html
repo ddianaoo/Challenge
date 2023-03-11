@@ -3,7 +3,6 @@
 <h2>{{ s.name }}</h2>
 <div class="col-md-6">
 <br>
-<br>
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -34,5 +33,37 @@
     </tbody>
 </table>
 </div>
-<h2><a href="{% url 'data_sets' s.pk %}">Data sets</a></h2>
+<h2>Data sets</h2>
+<div class="col-md-9">
+<a href="{% url 'create_data_sets' pk %}" style="float: right;" class="btn btn-success">Generate data</a>
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in queryset %}
+    <tr>
+        <th scope="row">{{ i.id }}</th>
+        <td>{{ i.created_at|date:"Y-m-d H:i" }}</td>
+        <td>
+            {{ s.upload }}
+        </td>
+        <td>
+            {% if s.upload == '' or  s.upload == 'Processing' %}
+            {% else %}
+            <a class="nav-text" href="#" style="color: blue;">Download</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
 {% endblock %}
