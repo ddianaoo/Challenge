@@ -48,10 +48,7 @@ def datagenerate(records, columns, names, filename, scheme_id):
                     filtered_dict[k] = v
             writer.writerow(filtered_dict)
 
-        dataset.upload = filename_
-        print('from task')
-        print(filename_)
-        print()
+        dataset.upload = filename_[5:]
         dataset.save()
 
     return filename
