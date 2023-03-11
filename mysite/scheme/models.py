@@ -17,7 +17,7 @@ CHOICES = (
 
 class Scheme(models.Model):
 
-    name = models.CharField(max_length=30, default="Scheme", blank=False, unique=True)
+    name = models.CharField(max_length=30, default="Scheme", blank=False)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
