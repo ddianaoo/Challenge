@@ -41,5 +41,6 @@ def single_scheme(request, pk):
     row4 = [schema.order4, schema.name4, schema.type4]
     row5 = [schema.order5, schema.name5, schema.type5]
     row6 = [schema.order6, schema.name6, schema.type6]
-    #return render(request, "scheme/single_scheme.html", {"s": schema})
-    return render(request, "scheme/single.html", {"s": schema, 'row1':row1, 'row2':row2, 'row3':row3, 'row4':row4, 'row5':row5, 'row6':row6})
+    rows = [row1, row2, row3, row4, row5, row6]
+    rows.sort(key=lambda x: x[0])
+    return render(request, "scheme/single.html", {"s": schema, 'rows': rows})
