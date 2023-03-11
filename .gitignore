@@ -8,6 +8,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+/mysite/media/
+media
+media/
+/media/
 build/
 develop-eggs/
 dist/
@@ -133,3 +137,4 @@ dmypy.json
 
 # that should not change!
 # used in self-checking
+/mysite/media/
