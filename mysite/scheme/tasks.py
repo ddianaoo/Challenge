@@ -10,11 +10,10 @@ from time import sleep
 from django.core.files.base import ContentFile
 
 
-def datagenerate(records, columns, names, filename, scheme_id, rows):
-    dataset = DataSets(scheme=scheme_id, rows=rows)
+def datagenerate(records, columns, names, filename, scheme_id):
     scheme = Scheme.objects.get(id=scheme_id)
-    scheme.upload = 'In Progress'
-    scheme.save()
+    dataset = DataSets(scheme=scheme, rows=records, upload='Processing')
+    dataset.save()
 
     fake = Faker('en_US')
     filename_ = filename
@@ -50,7 +49,7 @@ def datagenerate(records, columns, names, filename, scheme_id, rows):
                     filtered_dict[k] = v
             writer.writerow(filtered_dict)
 
-        scheme.upload = filename_[6:]
-        scheme.save()
+        dataset.upload = filename_[6:]
+        dataset.save()
 
     return filename

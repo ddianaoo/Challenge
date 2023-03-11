@@ -50,14 +50,14 @@ def single_scheme(request, pk):
 
 
 def data_sets(request, pk):
-    queryset = DataSets.objects.filter(scheme=pk).order_by('-id')
+    queryset = DataSets.objects.filter(scheme=pk)
     return render(request, "scheme/data_sets.html", {'pk': pk, 'queryset': queryset})
 
 
 def create_set(request, pk):
     if request.method == 'POST':
         scheme = Scheme.objects.get(pk=pk)
-        rows = request.POST['rows']
+        rows = int(request.POST['rows'])
         columns = []
 
         columns.append(scheme.type1)
@@ -90,8 +90,8 @@ def create_set(request, pk):
         while 'Choose..' in columns_real:
             columns_real.remove('Choose..')
 
-        print('Columns: ')
-        print(columns_real)
+        #print('Columns: ')
+        #print(columns_real)
 
         # NAMES
         # Get names
@@ -110,8 +110,8 @@ def create_set(request, pk):
         while 'Column' in names:
             names.remove('Column')
 
-        print('Names of columns: ')
-        print(names)
+        #print('Names of columns: ')
+        #print(names)
 
         # ORDER
         # Get order
@@ -127,24 +127,20 @@ def create_set(request, pk):
         while 0 in order:
             order.remove(0)
 
-        print('Order: ')
-        print(order)
+        #print('Order: ')
+        #print(order)
 
         if order:
             columns = [x for _, x in sorted(zip(order, columns_real))]
             names = [x for _, x in sorted(zip(order, names))]
 
-        print('Columns in order: ')
-        print(columns_real)
-        print(names)
-
-        rows = scheme.rows
-        print('Number of rows:')
-        print(rows)
+        #print('Columns in order: ')
+        #print(columns_real)
+        #print(names)
 
         filename = 'media/' + str(scheme.user) + '_' + str(scheme.name) + '_' + str(datetime.datetime.today().strftime('%Y-%m-%d_%H-%M-%S')) + '.csv'
 
-        task = datagenerate(rows, columns_real, names, filename, pk, rows)
+        task = datagenerate(rows, columns_real, names, filename, pk)
         print(filename)
         return render(request, 'scheme/load.html', {'s': scheme})
-    return render(request, 'scheme/create_set.html')
+    return render(request, 'scheme/create_set.html', {'pk': pk})
