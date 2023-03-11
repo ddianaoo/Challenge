@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ s.name }}</h2>
+<div class="col-md-6">
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Column name</th>
+        <th scope="col">Column type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if  s.name1 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order1|add:"1" }}</th>
+        <td>{{ s.name1 }}</td>
+        <td>
+{% if s.type1 == '0' %}
+{% elif s.type1 == '1' %} Full Name
+{% elif s.type1 == '2' %} Job
+{% elif s.type1 == '3' %} Company
+{% elif s.type1 == '4' %} Integer
+{% elif s.type1 == '5' %} Text
+{% elif s.type1 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    {% if  s.name2 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order2|add:"1" }}</th>
+        <td>{{ s.name2 }}</td>
+        <td>
+{% if s.type2 == '0' %}
+{% elif s.type2 == '1' %} Full Name
+{% elif s.type2 == '2' %} Job
+{% elif s.type2 == '3' %} Company
+{% elif s.type2 == '4' %} Integer
+{% elif s.type2 == '5' %} Text
+{% elif s.type2 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    {% if  s.name3 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order3|add:"1" }}</th>
+        <td>{{ s.name3 }}</td>
+        <td>
+{% if s.type3 == '0' %}
+{% elif s.type3 == '1' %} Full Name
+{% elif s.type3 == '2' %} Job
+{% elif s.type3 == '3' %} Company
+{% elif s.type3 == '4' %} Integer
+{% elif s.type3 == '5' %} Text
+{% elif s.type3 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    {% if  s.name4 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order4|add:"1" }}</th>
+        <td>{{ s.name4 }}
+        </td>
+        <td>
+{% if s.type4 == '0' %}
+{% elif s.type4 == '1' %} Full Name
+{% elif s.type4 == '2' %} Job
+{% elif s.type4 == '3' %} Company
+{% elif s.type4 == '4' %} Integer
+{% elif s.type4 == '5' %} Text
+{% elif s.type4 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    {% if  s.name5 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order5|add:"1" }}</th>
+        <td>{{ s.name5 }}</td>
+        <td>
+{% if s.type5 == '0' %}
+{% elif s.type5 == '1' %} Full Name
+{% elif s.type5 == '2' %} Job
+{% elif s.type5 == '3' %} Company
+{% elif s.type5 == '4' %} Integer
+{% elif s.type5 == '5' %} Text
+{% elif s.type5 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    {% if  s.name6 != 'Column' %}
+    <tr>
+        <th scope="row">{{ s.order6|add:"1"}}</th>
+        <td>{{ s.name6 }}</td>
+        <td>
+{% if s.type6 == '0' %}
+{% elif s.type6 == '1' %} Full Name
+{% elif s.type6 == '2' %} Job
+{% elif s.type6 == '3' %} Company
+{% elif s.type6 == '4' %} Integer
+{% elif s.type6 == '5' %} Text
+{% elif s.type6 == '6' %} E-mail
+{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
